@@ -9,7 +9,7 @@
 
 const conf = {
     // online
-    // serverHost: 'http://admin.happymall.shop'
+    // serverHost: 'http://admin.marinatedegg.top:81'
     // dev
     serverHost: 'http://localhost:8080/',
     imageHost: 'http://jpnb.xyz:82/img/',
