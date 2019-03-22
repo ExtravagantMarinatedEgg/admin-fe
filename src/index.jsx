@@ -14,7 +14,7 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRedirect, Link, hashHistory } from 'react-router';
 // bootstrap
 import 'node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'node_modules/bootstrap/dist/js/bootstrap.min.js';
+// import 'node_modules/bootstrap/dist/js/bootstrap.min.js';
 // bootstrap sb-admin-2 主题
 import 'node_modules/sb-admin-2/dist/css/sb-admin-2.min.css';
 // font-awesome 字体

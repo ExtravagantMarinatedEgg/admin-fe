@@ -7,9 +7,9 @@
 
 'use strict';
 
-import MMUtile from 'util/mm.jsx';
+import MMUtil from 'util/mm.jsx';
 
-const _mm = new MMUtile();
+const _mm = new MMUtil();
 
 export default class Order{
     // 获取订单列表
