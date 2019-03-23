@@ -7,9 +7,9 @@
 
 'use strict';
 
-import MMUtil from 'util/mm.jsx';
+import MMUtile from 'util/mm.jsx';
 
-const mm = new MMUtil();
+const mm = new MMUtile();
 
 export default class User{
     // 检查用于登录的信息是否合法

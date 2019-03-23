@@ -9,10 +9,10 @@
 
 const conf = {
     // online
-    // serverHost: 'http://admin.marinatedegg.top:81'
+    // serverHost: 'http://admin.happymmall.com'
     // dev
-    serverHost: 'http://localhost:8080/',
-    imageHost: 'http://jpnb.xyz:82/img/',
+    serverHost: '',
+    imageHost: 'http://img.happymmall.com/',
 }
 
 class MMUtil{
@@ -24,9 +24,6 @@ class MMUtil{
                 url        : param.url      || '',
                 dataType   : param.type     || "json",
                 data       : param.data     || null,
-                xhrFields: {
-            	 	withCredentials: true
-            	},
                 success    : res => {
                     // 数据成功
                     if(0 === res.status){

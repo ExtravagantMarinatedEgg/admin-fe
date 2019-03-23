@@ -16,12 +16,12 @@ import RichEditor   from 'component/rich-editor/index.jsx';
 
 import MMUtile from 'util/mm.jsx';
 import Product      from 'service/product.jsx';
-import E from 'wangeditor'
+
 const _mm = new MMUtile();
 const _product = new Product();
 
 import './save.scss';
-const editor = new E('#editor')
+
 const ProductSave = React.createClass({
     getInitialState() {
         return {
@@ -50,7 +50,6 @@ const ProductSave = React.createClass({
     loadFirstCategory(){
         // 查询一级品类时，不传id
         _product.getCategory().then(res => {
-        	console.log(res)
             this.setState({
                 firstCategoryList: res
             });
@@ -73,76 +72,19 @@ const ProductSave = React.createClass({
             alert(err.msg || '哪里不对了~');
         });
     },
-    //上传图片监听
-    listerImage(){
-	    editor.customConfig.uploadImgHooks = {
-	    before: function (xhr, editor, files) {
-	        // 图片上传之前触发
-	        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件
-	        
-	        // 如果返回的结果是 {prevent: true, msg: 'xxxx'} 则表示用户放弃上传
-	        // return {
-	        //     prevent: true,
-	        //     msg: '放弃上传'
-	        // }
-	    },
-	    success: function (xhr, editor, result) {
-	    	editor.txt.append('<p><img src="'+result.data.url+'"/></p>')
-	        // 图片上传并返回结果，图片插入成功之后触发
-	        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-	    },
-	    fail: function (xhr, editor, result) {
-	    	editor.txt.append(result.data.url)
-	        // 图片上传并返回结果，但图片插入错误时触发
-	        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-	    },
-	    error: function (xhr, editor) {
-	        // 图片上传出错时触发
-	        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
-	    },
-	    timeout: function (xhr, editor) {
-	        // 图片上传超时时触发
-	        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
-	    },
-	
-	    // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
-	    // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
-	    customInsert: function (insertImg, result, editor) {
-	        // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
-	        // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
-	
-	        // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
-	        var url = result.url
-	        insertImg(url)
-	
-	        // result 必须是一个 JSON 格式字符串！！！否则报错
-	    }
-	    }
-	},
-    
     // 编辑的时候，需要初始化商品信息
     loadProduct(){
         // 有id参数时，读取商品信息
         if(this.state.id){
             // 查询一级品类时，不传id
             _product.getProduct(this.state.id).then(res => {
-            	
                 let product = this.productAdapter(res)
-                console.log(product)
                 this.setState(product);
                 // 有二级分类时，load二级列表
                 if(product.firstCategoryId){
                     this.loadSecondCategory();
                 }
-                this.listerImage();
-//              editor.customConfig.uploadImgShowBase64 = true
-                editor.customConfig.withCredentials = true
-                editor.customConfig.uploadFileName = 'upload_file'
-                editor.customConfig.uploadImgServer = 'http://localhost:8080/manage/product/upload.do'
-//              editor.customConfig.showLinkImg = false
-			    editor.create()
-			    editor.txt.html(product.detail)
-			    
+                this.refs['rich-editor'].setValue(product.detail);
             }, err => {
                 alert(err.msg || '哪里不对了~');
             });
@@ -151,8 +93,8 @@ const ProductSave = React.createClass({
     // 适配接口返回的数据
     productAdapter(product){
         // 如果父品类是0（根品类），则categoryId作为一级品类
-        let firstCategoryId     = product.categoryId === 0 ? product.categoryId : product.parentCategortId,
-            secondCategoryId    = product.categoryId === 0 ? '' : product.categoryId;
+        let firstCategoryId     = product.parentCategoryId === 0 ? product.categoryId : product.parentCategoryId,
+            secondCategoryId    = product.parentCategoryId === 0 ? '' : product.categoryId;
         return {
             categoryId          : product.categoryId,
             name                : product.name,
@@ -263,13 +205,12 @@ const ProductSave = React.createClass({
         // 阻止提交
         e.preventDefault();
         // 需要提交的字段
-        console.log(editor.txt.text())
         let product = {
                 categoryId          : this.state.secondCategoryId || this.state.firstCategoryId || 0,
                 name                : this.state.name,
                 subtitle            : this.state.subtitle,
                 subImages           : this.state.subImages.join(','),
-                detail              : editor.txt.html(),
+                detail              : this.state.detail,
                 price               : this.state.price,
                 stock               : this.state.stock,
                 status              : this.state.status || 1 // 状态为正常
@@ -402,7 +343,7 @@ const ProductSave = React.createClass({
                             <div className="form-group">
                                 <label htmlFor="inputEmail3" className="col-md-2 control-label">商品详情</label>
                                 <div className="col-md-10">
-                                    <RichEditor ref="editor" onValueChange={this.onRichValueChange} placeholder="商品详细信息"/>
+                                    <RichEditor ref="rich-editor" onValueChange={this.onRichValueChange} placeholder="商品详细信息"/>
                                 </div>
                             </div>
                             <div className="form-group">

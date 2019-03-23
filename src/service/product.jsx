@@ -6,9 +6,9 @@
 */
 
 'use strict';
-import MMUtil from 'util/mm.jsx';
+import MMUtile from 'util/mm.jsx';
 
-const _mm = new MMUtil();
+const _mm = new MMUtile();
 
 export default class Product{
     

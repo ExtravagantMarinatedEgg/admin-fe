@@ -1,8 +1,8 @@
 /*
 * @Author: Rosen
 * @Date:   2016-11-20 13:19:28
-* @Last Modified by:   zhengquan
-* @Last Modified time: 2017-10-11 10:17:59
+* @Last Modified by:   Rosen
+* @Last Modified time: 2017-03-21 18:13:41
 * 知识点：css单独打包、全局jquery引用、各种loader
 */
 
@@ -42,12 +42,10 @@ var config = {
     module: {
         // noParse: [],
         loaders: [
-            {
-                test: /\.css$/, loader: ExtractTextPlugin.extract({
-                    use: 'css-loader',
-                    fallback : 'style-loader'
-                })
-            },
+            {test: /\.css$/, loader: ExtractTextPlugin.extract({
+                use: 'css-loader',
+                fallback : 'style-loader'
+            })},
             {test: /\.scss$/, loader: ExtractTextPlugin.extract({
                 use: 'css-loader!sass-loader',
                 fallback : 'style-loader'
