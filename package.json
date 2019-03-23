@@ -1,7 +1,7 @@
 {
-  "name": "mmall_admin_fe",
+  "name": "admin_fe",
   "version": "1.0.0",
-  "description": "admin.happymmall.com",
+  "description": "admin.mmall.com",
   "main": "index.js",
   "scripts": {
     "dev"     : "WEBPACK_ENV=dev webpack-dev-server --port 8086 --inline --secure false",
@@ -10,8 +10,8 @@
     "dist_win": "set WEBPACK_ENV=online && webpack -p"
   },
   "repository": {
-    "type": "git",
-    "url": "https://git.oschina.net/happymmall/mmall_admin_fe.git"
+    "type": "",
+    "url": ""
   },
   "author": "Rosen",
   "license": "ISC",
