@@ -136,7 +136,7 @@ const ProductSave = React.createClass({
                 }
                 this.listerImage();
 //              editor.customConfig.uploadImgShowBase64 = true
-                editor.customConfig.withCredentials = true
+                //editor.customConfig.withCredentials = true
                 editor.customConfig.uploadFileName = 'upload_file'
                 editor.customConfig.uploadImgServer = 'http://admin.marinatedegg.top:81/manage/product/upload.do'
 //              editor.customConfig.showLinkImg = false
