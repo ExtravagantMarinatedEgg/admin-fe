@@ -26,7 +26,7 @@ var config = {
     // path && publickPath
     output: {
         path        : __dirname + '/dist/',
-        publicPath  : WEBPACK_ENV === 'online' ? '//s.shendengnian.com/admin-fe/dist/' : '/dist/',
+        publicPath  : WEBPACK_ENV === 'online' ? '//s.marinatedegg.top:81/admin-fe/dist/' : '/dist/',
         filename    : 'js/[name].js'
     },
     resolve: {
