@@ -263,7 +263,7 @@ const ProductSave = React.createClass({
         // 阻止提交
         e.preventDefault();
         // 需要提交的字段
-        console.log(editor.txt.text())
+        console.log(editor.txt.html())
         let product = {
                 categoryId          : this.state.secondCategoryId || this.state.firstCategoryId || 0,
                 name                : this.state.name,
