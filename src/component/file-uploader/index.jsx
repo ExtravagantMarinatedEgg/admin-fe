@@ -30,11 +30,9 @@ const FileUploader = React.createClass({
             baseUrl         : _mm.getServerUrl('/manage/product/upload.do'),
             fileFieldName   : 'upload_file',
             accept          : 'image/gif,image/jpeg,image/jpg,image/png',
-            dataType : 'json',
             chooseAndUpload : true,
             uploadSuccess   : this.props.onSuccess,
-            uploadError     : this.props.onError,
-            withCredentials: true
+            uploadError     : this.props.onError
         }
         /*Use FileUpload with options*/
         /*Set two dom with ref*/
