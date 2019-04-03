@@ -25,6 +25,6 @@
 注意：
 1.后台管理系统使用了sass, 需要安装ruby和sass
 
-2.后端接口也要使用代理，http://localhost:8086/manage/* --> http://admin.happymmall.com/manage/
+2.后端接口也要使用代理，http://localhost:8086/manage/* --> http://admin.happymall.shop/manage/
 
 3.后台管理系统的预览账号：admin  happymmalladmin

@@ -1,14 +1,17 @@
 /*
 * @Author: Rosen
 * @Date:   2017-02-24 10:47:04
- * @Last Modified by: wjs
- * @Last Modified time: 2019-04-02 09:38:27
+* @Last Modified by:   Rosen
+* @Last Modified time: 2017-04-13 15:58:04
 */
 
 'use strict';
 
 const conf = {
-    serverHost: 'http://admin.marinatedegg.top:81/',
+    // online
+    // serverHost: 'http://admin.happymall.shop'
+    // dev
+    serverHost: '',
     imageHost: 'http://img.marinatedegg.top:81/',
 }
 
@@ -21,6 +24,9 @@ class MMUtil{
                 url        : param.url      || '',
                 dataType   : param.type     || "json",
                 data       : param.data     || null,
+                xhrFields: {
+            	 	withCredentials: true
+            	},
                 success    : res => {
                     // 数据成功
                     if(0 === res.status){
