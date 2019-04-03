@@ -12,7 +12,7 @@ const conf = {
     // serverHost: 'http://admin.happymall.shop'
     // dev
     serverHost: '',
-    imageHost: 'http://img.marinatedegg.top:81',
+    imageHost: 'http://img.marinatedegg.top:81/',
 }
 
 class MMUtil{

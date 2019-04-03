@@ -138,7 +138,7 @@ const ProductSave = React.createClass({
 //              editor.customConfig.uploadImgShowBase64 = true
                 editor.customConfig.withCredentials = true
                 editor.customConfig.uploadFileName = 'upload_file'
-                editor.customConfig.uploadImgServer = 'http://localhost:8080/manage/product/upload.do'
+                editor.customConfig.uploadImgServer = 'http://www.marinatedegg:81/manage/product/upload.do'
 //              editor.customConfig.showLinkImg = false
 			    editor.create()
 			    editor.txt.html(product.detail)
