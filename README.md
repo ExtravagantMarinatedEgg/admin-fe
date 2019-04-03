@@ -9,6 +9,8 @@
 3.全局安装webpack-dev-server
     命令: (sudo) npm install -g webpack-dev-server
 
+4.在慕课网上下载源码，解压缩
+
 5.在项目根目录执行npm初始化
     命令: npm install (--registry=https://registry.npm.taobao.org)
 
@@ -22,3 +24,7 @@
 
 注意：
 1.后台管理系统使用了sass, 需要安装ruby和sass
+
+2.后端接口也要使用代理，http://localhost:8086/manage/* --> http://admin.happymall.shop/manage/
+
+3.后台管理系统的预览账号：admin  happymmalladmin

@@ -9,9 +9,9 @@
 
 const conf = {
     // online
-    // serverHost: 'http://admin.happymmall.com'
+    // serverHost: 'http://admin.happymall.shop'
     // dev
-    serverHost: 'http://admin.marinatedegg.top:81',
+    serverHost: '',
     imageHost: 'http://img.marinatedegg.top:81/',
 }
 
@@ -24,6 +24,9 @@ class MMUtil{
                 url        : param.url      || '',
                 dataType   : param.type     || "json",
                 data       : param.data     || null,
+                xhrFields: {
+            	 	withCredentials: true
+            	},
                 success    : res => {
                     // 数据成功
                     if(0 === res.status){
